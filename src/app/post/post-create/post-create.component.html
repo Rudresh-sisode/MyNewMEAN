@@ -1,7 +1,16 @@
-<textarea rows="6" [(ngModel)]="enteredValued"></textarea>
-<hr/>
-<!--Event listener is here line no (4)-->
-<button (click)="onAddPost()">Save Post</button>
-<hr/>
+<mat-card>
+  <mat-form-field>
+    <input matInput type="text" [(ngModel)]="enteredTitle">
+  </mat-form-field>
+<mat-form-field>
+  <textarea matInput rows="6" [(ngModel)]="enteredContent"></textarea>
+</mat-form-field>
+
+<button
+ mat-raised-button
+ color="accent"
+ (click)="onAddPost()">Save Post</button>
+</mat-card>
+
 <!--string interpulation-->
-<p>{{ newPost }}</p>
+
