@@ -14,6 +14,7 @@ import { HeaderComponent } from './header/header.component';
 import { PostListComponent } from './post/post-list/post-list.component';
 
 
+
 @NgModule({
   //all the component and pipe goes here
   declarations: [
@@ -36,7 +37,9 @@ import { PostListComponent } from './post/post-list/post-list.component';
 
   ],
   //all servicess will be declared here.
-  providers: [],
+  providers: [
+
+  ],
   //only first component will be declared here.
   bootstrap: [AppComponent]
 })
