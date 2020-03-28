@@ -21,7 +21,7 @@ constructor(public postService: PostService){
 
  }
  ngOnInit(){
-   this.posts=this.postService.getPost();
+   this.postService.getPost();
    this.postSub = this.postService.getPostUpdateListner()
    .subscribe((posts:Post[])=>{
     this.posts=posts;

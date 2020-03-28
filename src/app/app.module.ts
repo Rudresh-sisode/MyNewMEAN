@@ -12,7 +12,7 @@ import { PostCreateComponent } from './post/post-create/post-component';
 import {FormsModule} from '@angular/forms';
 import { HeaderComponent } from './header/header.component';
 import { PostListComponent } from './post/post-list/post-list.component';
-
+import {HttpClientModule} from '@angular/common/http';
 
 
 @NgModule({
@@ -33,7 +33,8 @@ import { PostListComponent } from './post/post-list/post-list.component';
     MatCardModule,
     MatButtonModule,
     MatToolbarModule,
-    MatExpansionModule
+    MatExpansionModule,
+    HttpClientModule
 
   ],
   //all servicess will be declared here.
