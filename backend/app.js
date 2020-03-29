@@ -3,7 +3,7 @@ const bodyParser=require('body-parser');
 const mongoose= require('mongoose');
 const Post= require('./models/post');
  const app = express();
- mongoose.connect("mongodb+srv://sohame:uUsTDk0Xh76ixWzx@cluster0-sgwbe.mongodb.net/test?retryWrites=true&w=majority")
+ mongoose.connect("mongodb+srv://sohame:uUsTDk0Xh76ixWzx@cluster0-sgwbe.mongodb.net/angular-node?retryWrites=true&w=majority")
  .then(()=>{
    console.log("Connection to DB");
  })
@@ -28,6 +28,7 @@ app.post("/api/posts",(req,res,next)=>{
 
   console.log(post);
 
+  post.save();
   res.status(201).json({
     message:"Post added successfully"
   });
@@ -36,21 +37,19 @@ app.post("/api/posts",(req,res,next)=>{
 
 
  app.get('/api/posts',(req,res,next)=>{
-   const posts=[
-     {id:"fafd122323",
-     title:"First serer",
-     content:"this is comming from server1"
-    },
-    {id:"fafd1223267",
-     title:"Second Server",
-     content:"this is comming from server2"
-    }
-   ]
-   res.status(200).json({
-     message:"post fetched successfully!",
-     posts:posts
+   Post.find()
+   .then(documents =>{
+     console.log(documents)
+
+     res.status(200).json({
+      message:"post fetched successfully!",
+      posts:documents
+    });
    });
+
+
  })
 
 module.exports=app;
 //uUsTDk0Xh76ixWzx
+//mongo "mongodb+srv://cluster0-sgwbe.mongodb.net/test"  --username sohame
