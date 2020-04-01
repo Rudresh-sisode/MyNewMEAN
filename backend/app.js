@@ -1,7 +1,9 @@
 const express = require('express');
 const bodyParser=require('body-parser');
 const mongoose= require('mongoose');
-const Post= require('./models/post');
+const postsRoutes = require('./routes/posts')
+
+
  const app = express();
  mongoose.connect("mongodb+srv://sohame:uUsTDk0Xh76ixWzx@cluster0-sgwbe.mongodb.net/angular-node?retryWrites=true&w=majority")
  .then(()=>{
@@ -17,39 +19,54 @@ app.use(bodyParser.urlencoded({extended:false}));
 app.use((req,res,next)=>{
   res.setHeader("Access-Control-Allow-Origin","*");
   res.setHeader("Access-Control-Allow-Headers","Origin, X-Requested-With, Content-Type, Accept");
-  res.setHeader("Access-Control-Allow-Methods","GET,POST,PATCH,DELETE,OPTIONS");
+  res.setHeader("Access-Control-Allow-Methods","GET,POST,PATCH,PUT,DELETE,OPTIONS");
   next();
-})
+})/*
 app.post("/api/posts",(req,res,next)=>{
   const post= new Post({
     title:req.body.title,
     content:req.body.content
   })
-
   console.log(post);
-
   post.save().then(result=>{
     res.status(201).json({
       message:"Post added successfully",postId:result._id
     });
   });
-
-
 });
 
+app.get("/api/posts/:id",(req,res,next)=>{
+  Post.findById(req.params.id).then(post => {
+    if (post){
+      res.status(200).json(post);
+    }
+    else{
+      res.status(404).json({msg:"post not found"});
+    }
+  });
+});
+
+app.put("/api/posts/:id",(req,res,next)=>{
+  const post=new Post({
+    _id:req.body.id,
+    title:req.body.title,
+    content:req.body.content
+  })
+  Post.updateOne({_id:req.params.id},post).then(result=>{
+    console.log(result);
+    res.status(200).json({message:"Updated Successfully"})
+  })
+})
 
  app.get('/api/posts',(req,res,next)=>{
    Post.find()
    .then(documents =>{
      console.log(documents)
-
      res.status(200).json({
       message:"post fetched successfully!",
       posts:documents
     });
    });
-
-
  });
 
  app.delete("/api/posts/:id",(req,res,next)=>{
@@ -58,9 +75,9 @@ app.post("/api/posts",(req,res,next)=>{
      console.log(req.params.id);
    res.status(200).json({message:"Post deleted Successfully"});
    });
-
  })
-
+*/
+app.use("/api/posts",postsRoutes);
 
 module.exports=app;
 //uUsTDk0Xh76ixWzx
