@@ -4,6 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatInputModule} from '@angular/material/input';
 import {MatCardModule} from '@angular/material/card';
 import {MatExpansionModule} from '@angular/material/expansion';
+import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatToolbarModule} from '@angular/material/toolbar';
  import {MatProgressSpinnerModule} from '@angular/material/progress-spinner'
 import{MatButtonModule} from '@angular/material/button'
@@ -36,8 +37,8 @@ import {HttpClientModule} from '@angular/common/http';
     MatToolbarModule,
     MatExpansionModule,
     MatProgressSpinnerModule,
-    HttpClientModule
-
+    HttpClientModule,
+    MatPaginatorModule
   ],
   //all servicess will be declared here.
   providers: [
