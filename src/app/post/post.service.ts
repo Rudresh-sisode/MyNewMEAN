@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 
 export class PostService{
 
+
   private posts:Post[]=[];
   private postUpdated=new Subject<{posts:Post[],postCount:number}>();
 
